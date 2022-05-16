@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct PomodoroTimer0516App: App {
-    let persistenceController = PersistenceController.shared
-
+    //mark since we're doing background fetching intializing here
+    @StateObject var pomodoroModel: PomodoroModel = .init()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(pomodoroModel)
         }
     }
 }
